@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drivr-competitie</title>
+<meta name="description" content="Doe mee met de Drivr-competitie">
+<style>
+  :root { --bg:#05070a; --fg:#e8f1f6; --muted:#8a99a6; --accent:#7fd4ff; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:var(--bg); color:var(--fg); font-family:-apple-system, system-ui, sans-serif; }
+  main { max-width:420px; padding:32px 20px; text-align:center; }
+  h1 { font-size:28px; letter-spacing:.08em; margin:0 0 8px; }
+  p { color:var(--muted); line-height:1.5; }
+  .code { font:700 26px ui-monospace, monospace; color:var(--accent); letter-spacing:.15em; margin:18px 0; }
+  a.btn { display:block; margin:12px 0; padding:15px; border-radius:14px; text-decoration:none; font-weight:600; }
+  .primary { background:var(--accent); color:#05070a; }
+  .secondary { border:1px solid #2a3540; color:var(--fg); }
+</style>
+</head>
+<body>
+<main>
+  <h1>DRIVR</h1>
+  <p id="who">Je bent uitgenodigd voor de Drivr-competitie.</p>
+  <div class="code" id="code"></div>
+  <a class="btn primary" id="get" href="https://testflight.apple.com/join/tWB3Gt9b">Drivr downloaden</a>
+  <a class="btn secondary" id="open" href="#">Ik heb Drivr al</a>
+  <p>Heb je Drivr al? Dan opent deze link de app en word je vriend meteen toegevoegd. Lukt dat niet, vul de code dan in bij Prestaties › Competitie.</p>
+</main>
+<script>
+  var q = new URLSearchParams(location.search);
+  var c = (q.get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+  var n = (q.get('n') || '').slice(0, 24);
+  document.getElementById('code').textContent = c;
+  if (n) document.getElementById('who').textContent = n + ' nodigt je uit voor de Drivr-competitie.';
+  // Universal link opnieuw proberen (werkt als de pagina via Safari geopend is)
+  document.getElementById('open').href = location.origin + '/drivr/add/?c=' + encodeURIComponent(c);
+</script>
+</body>
+</html>

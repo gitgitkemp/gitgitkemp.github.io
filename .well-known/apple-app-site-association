@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["D3TG6GABVH.nl.drivr.app"],
+        "components": [{ "/": "/drivr/add/*", "comment": "Vriendlink voor de competitie" }]
+      }
+    ]
+  }
+}
